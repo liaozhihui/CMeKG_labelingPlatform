@@ -1,4 +1,4 @@
-from _init_ import db
+from _init_ import labelDB as db,app
 
 
 class User(db.Model):
@@ -72,4 +72,6 @@ class Task_File(db.Model):
 
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.drop_all()
+        db.create_all()

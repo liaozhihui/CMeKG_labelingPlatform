@@ -1,4 +1,4 @@
-from _init_ import app,db,login_manager
+from _init_ import app,labelDB,login_manager
 from flask import render_template, request,redirect
 from db import DB
 from verify import Verify

@@ -5,9 +5,11 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config.from_object('config')
-db = SQLAlchemy(app)
-mail = Mail(app)
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "/login"
+with app.app_context():
+    labelDB = SQLAlchemy(app)
+    labelDB.create_all()
+    mail = Mail(app)
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = "/login"
 

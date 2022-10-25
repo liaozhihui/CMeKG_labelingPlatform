@@ -1,5 +1,5 @@
 from models import User,Code,File,Task,Task_User,Task_File,Group,Task_Group,Group_user
-from _init_ import db
+from _init_ import labelDB as db
 
 
 class DB:
