@@ -157,6 +157,7 @@ def register():
 @app.route('/send_code', methods=['POST'])
 def send_code():
     email = request.form.get('email')
+    print("email:",email)
     return v.write_code(email)
 
 

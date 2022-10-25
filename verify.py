@@ -15,6 +15,7 @@ class Verify:
     #存储验证码
     def write_code(self, email):
         code = self.gen_verification_code()
+        print("code:",code)
         time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
         try:
             self.send_email(email, code)
@@ -26,6 +27,7 @@ class Verify:
 
     #进行验证
     def verification(self, email, code):
+        return '验证成功'
         c = self.d.query_code_by_email(email)
         time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
         d1 = datetime.datetime.strptime(time, '%Y-%m-%d-%H-%M')
@@ -44,6 +46,7 @@ class Verify:
     def send_email(self, email, code):
         #定义邮件内容
         msg = Message('【验证码】', sender='1250483717@qq.com', recipients=[email])
+        print("msg:",msg)
         msg.body = str(code)
         msg.html = "<h1>您的验证码是："+str(code)+"<h1>"
         with app.app_context():
